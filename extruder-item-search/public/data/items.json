@@ -1,0 +1,27 @@
+{
+    "dataset":
+    [
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA06", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false},
+        {"machine":"BSA03", "date":"9/4/2024", "quantity":3, "active":true},
+        {"machine":"BSA04", "date":"9/5/2024", "quantity":5, "active":true}, 
+        {"machine":"BSA05", "date":"9/4/2024", "quantity":2, "active":false}
+    ]
+}
