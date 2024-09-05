@@ -8,6 +8,7 @@ const QRMaker=()=>{
     const [date,setDate]=useState("");
     const [quantity,setQuantity]=useState("");
     const [active,setActive]=useState("");
+    const [selectedOption, setSelectedOption] = useState(true);
 
     const componentRef = useRef(null);  // Ensure it starts as null
 
@@ -23,6 +24,14 @@ const QRMaker=()=>{
     // useEffect(()=>{
     //     console.log(newQR);
     // },[newQR])
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+      };
+
+    // useEffect(()=>{
+    //     console.log(selectedOption);
+    // },[selectedOption])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,15 +63,34 @@ const QRMaker=()=>{
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">Date:</span>
-                        <input className="form-control"nput type="text" autoComplete="off" id="date" onChange={(e)=>setDate(e.target.value)}></input>
+                        <input placeholder="mm/dd/yyyy" type="date" className="form-control"nput type="text" autoComplete="off" id="date" onChange={(e)=>setDate(e.target.value)}></input>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">Quantity:</span>
-                        <input className="form-control"nput type="text" autoComplete="off" id="quantity" onChange={(e)=>setQuantity(e.target.value)}></input>
+                        <input type="number" keyboard className="form-control"nput type="text" autoComplete="off" id="quantity" onChange={(e)=>setQuantity(e.target.value)}></input>
                     </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text">Active:</span>
-                        <input className="form-control" type="text" autoComplete="off" id="active" onChange={(e)=>setActive(e.target.value)}></input>
+                    <div className="input-group align-items-center">
+                        <span className="input-group-text">Status</span>
+                        <div className="col">
+                            <input
+                            type="radio"
+                            name="options"
+                            value={true}
+                            onChange={handleOptionChange}
+                            className="form-check-input"
+                            />
+                            <span>Active</span>
+                        </div>
+                        <div className="col">
+                            <input
+                            type="radio"
+                            name="options"
+                            value={false}
+                            onChange={handleOptionChange}
+                            className="form-check-input"
+                            />
+                            <span>Inactive</span>
+                        </div>
                     </div>
                 </div>
                 <PrintPage newQR={newQR} componentRef={componentRef}/>
