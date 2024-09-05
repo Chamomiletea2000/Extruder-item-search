@@ -7,8 +7,7 @@ const QRMaker=()=>{
     const [machine,setMachine]=useState("");
     const [date,setDate]=useState("");
     const [quantity,setQuantity]=useState("");
-    const [active,setActive]=useState("");
-    const [selectedOption, setSelectedOption] = useState(true);
+    const [active,setActive]=useState(true);
 
     const componentRef = useRef(null);  // Ensure it starts as null
 
@@ -26,7 +25,7 @@ const QRMaker=()=>{
     // },[newQR])
 
     const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
+        setActive(event.target.value)
       };
 
     // useEffect(()=>{
@@ -63,29 +62,31 @@ const QRMaker=()=>{
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">Date:</span>
-                        <input placeholder="mm/dd/yyyy" type="date" className="form-control"nput type="text" autoComplete="off" id="date" onChange={(e)=>setDate(e.target.value)}></input>
+                        <input placeholder="mm/dd/yyyy" className="form-control"nput type="date" autoComplete="off" id="date" onChange={(e)=>setDate(e.target.value)}></input>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">Quantity:</span>
-                        <input type="number" keyboard className="form-control"nput type="text" autoComplete="off" id="quantity" onChange={(e)=>setQuantity(e.target.value)}></input>
+                        <input keyboard className="form-control"nput type="number" autoComplete="off" id="quantity" onChange={(e)=>setQuantity(e.target.value)}></input>
                     </div>
-                    <div className="input-group align-items-center">
+                    <div className="input-group align-items-center ">
                         <span className="input-group-text">Status</span>
-                        <div className="col">
+                        <div className="form-control">
                             <input
                             type="radio"
                             name="options"
                             value={true}
+                            checked={active===true}
                             onChange={handleOptionChange}
                             className="form-check-input"
                             />
                             <span>Active</span>
                         </div>
-                        <div className="col">
+                        <div className="form-control">
                             <input
                             type="radio"
                             name="options"
                             value={false}
+                            checked={active===false}
                             onChange={handleOptionChange}
                             className="form-check-input"
                             />
