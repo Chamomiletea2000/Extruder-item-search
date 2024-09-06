@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import db from "../assets/firebase"
 
-
-
-const Table=()=>{
+const Table=(props)=>{
     const [data,setData]=useState([]);
+    
     useEffect(() => {
-        fetch('/data/items.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => setData(data.dataset))
-            .catch(error => console.error('There was a problem with the fetch operation:', error));
-    }, []);
+        async function querySnapshot() {
+            const querysnapshot = await getDocs(collection(db, "test"));
+            const documents = querysnapshot.docs.map(doc => ({
+                id: doc.id, // to store the document ID
+                ...doc.data() // to get the document's data
+            }));
+            setData(documents);
+        }
+        querySnapshot();
+        console.log("Got data from database");
+    }, [props.changeFlag]);
+
     return (
         <table className="table table-hover">
             <thead className="table-light">
