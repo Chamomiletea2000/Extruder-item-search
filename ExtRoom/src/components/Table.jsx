@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../assets/firebase"
 
-const Table=(props)=>{
+
+
+const Table=(props)=>{  
     const [data,setData]=useState([]);
-    
     useEffect(() => {
         async function querySnapshot() {
             const querysnapshot = await getDocs(collection(db, "test"));
@@ -18,27 +19,28 @@ const Table=(props)=>{
         console.log("Got data from database");
     }, [props.changeFlag]);
 
+    useEffect(()=>{
+        console.log(data);
+    },[data])
     return (
-        <table className="table table-hover">
-            <thead className="table-light">
-                <tr>
-                    <td>Machine</td>
-                    <td>Date</td>
-                    <td>Quantity</td>
-                    <td>Active</td>
-                </tr>
-            </thead>
-            <tbody>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col">Machine</div>
+                <div className="col">Date</div>
+                <div className="col">Quantity</div>
+                <div className="col">Active</div>
+            </div>
+            <div className="row">
                 {data.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.machine}</td>
-                        <td>{item.date}</td>
-                        <td>{item.quantity}</td>
-                        <td>{item.active?"True":"False"}</td>
-                    </tr>
+                    <div className="row" key={index}>
+                        <div className="col">{item.machine}</div>
+                        <div className="col">{item.date}</div>
+                        <div className="col">{item.quantity}</div>
+                        <div className="col">{item.active==="false"?"False":"True"}</div>
+                    </div>
                 ))}
-            </tbody>
-        </table>
+            </div>
+        </div>
     );
 }
 
