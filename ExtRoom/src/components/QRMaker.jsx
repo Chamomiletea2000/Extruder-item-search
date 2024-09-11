@@ -13,9 +13,9 @@ const QRMaker=(props)=>{
     const [qrHeight,setQRHeight]=useState('3in'); //default size, because 6in leaves a lot of blank space
     const [fullQRData,setFullQRData]=useState({});
 
-    function addQRData(){
+    function addQRData(newData){
         async function docRef() {
-            const doc = await addDoc(collection(db, "test"), fullQRData);
+            const doc = await addDoc(collection(db, "test"), newData);
               return doc;
         }
         try {
@@ -29,9 +29,11 @@ const QRMaker=(props)=>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let dateRecorded=(new Date()).toDateString();
-        setFullQRData({...fullQRData,dateRecorded:dateRecorded});
-        addQRData();
+        let today=new Date;
+        let dateRecorded=today.toDateString();
+        let updatedData={...fullQRData,dateRecorded:dateRecorded};
+        console.log("updated: ",updatedData, "date ",dateRecorded);
+        addQRData(updatedData);
         props.setChangeFlag(!props.changeFlag);
         alert("submitted!");
         handlePrint();

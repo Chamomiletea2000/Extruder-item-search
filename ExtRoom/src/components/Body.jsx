@@ -29,10 +29,10 @@ const Body=()=>{
         <div className="row">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-5 bg-light py-5 bg-white" id="left-side">
+                    <div className="col-5 bg-light py-5 bg-white pt-0" id="left-side">
                         <Table data={data}/>
                     </div>
-                    <div className="col-7 bg-light py-5 bg-white" id="right-side">
+                    <div className="col-7 bg-light py-5 bg-white pt-0" id="right-side">
                         <QRMaker setChangeFlag={setChangeFlag} changeFlag={changeFlag}/>
                     </div>
                 </div>
