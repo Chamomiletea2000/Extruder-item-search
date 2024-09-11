@@ -1,46 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import db from "../assets/firebase"
+import React from "react";
 
 
-
+{/*to make it looks nice I add plus one to every index th so that it doesnt start at 0*/}
 const Table=(props)=>{  
-    const [data,setData]=useState([]);
-    useEffect(() => {
-        async function querySnapshot() {
-            const querysnapshot = await getDocs(collection(db, "test"));
-            const documents = querysnapshot.docs.map(doc => ({
-                id: doc.id, // to store the document ID
-                ...doc.data() // to get the document's data
-            }));
-            setData(documents);
-        }
-        querySnapshot();
-        console.log("Got data from database");
-    }, [props.changeFlag]);
-
-    useEffect(()=>{
-        console.log(data);
-    },[data])
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col">Machine</div>
-                <div className="col">Date</div>
-                <div className="col">Quantity</div>
-                <div className="col">Active</div>
-            </div>
-            <div className="row">
-                {data.map((item, index) => (
-                    <div className="row" key={index}>
-                        <div className="col">{item.machine}</div>
-                        <div className="col">{item.date}</div>
-                        <div className="col">{item.quantity}</div>
-                        <div className="col">{item.active==="false"?"False":"True"}</div>
-                    </div>
+        <table className="table table-hover">
+           <thead> 
+                <tr>
+                    <th className="col">#</th>
+                    <th className="col">CS#</th>
+                    <th className="col">Machine</th>
+                    <th className="col">Date</th>
+                    <th className="col">Location</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {props.data.map((item,index) => (
+                    <tr key={item.id}>
+                        <th>{index+1}</th>      
+                        <td>{item.csNum}</td>
+                        <td>{item.machine}</td>
+                        <td>{item.date}</td>
+                        <td>{item.location}</td>
+                    </tr>
                 ))}
-            </div>
-        </div>
+            </tbody>
+        </table>
     );
 }
 

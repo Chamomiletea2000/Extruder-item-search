@@ -7,13 +7,11 @@ const PrintTemplate = React.forwardRef((props, ref) => {
       <div style={styles.qrCode}>
         <QRCode value={props.newQR} size={200} />
       </div>
-      <div style={styles.description}>
-        {props.newQR.split('\n').map((item)=>{
+        {props.newQR.split('\n').map((item, index)=>{
           return(
-            <p>{item}</p>
+            <div key={index} style={styles.description} className='row p-1 m-0'>{item==='true'?"Active":item==='false'?"Inactive":item}</div>
           );
         })}
-      </div>
     </div>
   );
 });
@@ -31,7 +29,7 @@ const styles = {
   },
   qrCode: {
     textAlign: 'center',
-    marginBottom: '20px',
+    margin: '20px',
   },
   description: {
     textAlign: 'center',
