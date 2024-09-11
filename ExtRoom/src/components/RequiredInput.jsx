@@ -21,13 +21,13 @@ export default function RequiredInput(props){
             date:date,
             csNum:csNum,
             location:location,
-            description:description
+            description:description,
         })
     },[machine,date,csNum,location,description]);
 
-    // useEffect(()=>{
-    //     console.log("this is fullqrdata",props.fullQRData);
-    // },[props.fullQRData])
+    useEffect(()=>{
+        console.log("this is fullqrdata",props.fullQRData);
+    },[props.fullQRData])
 
     return(
         <div className="col">

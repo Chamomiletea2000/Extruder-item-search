@@ -29,6 +29,8 @@ const QRMaker=(props)=>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let dateRecorded=(new Date()).toDateString();
+        setFullQRData({...fullQRData,dateRecorded:dateRecorded});
         addQRData();
         props.setChangeFlag(!props.changeFlag);
         alert("submitted!");

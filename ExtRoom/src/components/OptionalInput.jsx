@@ -16,10 +16,6 @@ export default function OptionalInput(props){
         })
     },[owner,department,modelNumber,active]);
 
-    const handleOptionChange = (event) => {
-        setActive(event.target.value)
-      };
-
     return(
         <div className="col">
             <div className="input-group mb-3">
@@ -42,7 +38,7 @@ export default function OptionalInput(props){
                     name="options"
                     value={"true"}
                     checked={active==="true"}
-                    onChange={handleOptionChange}
+                    onChange={(event)=>{setActive(event.target.value)}}
                     className="form-check-input"
                     />
                     <span>Active</span>
@@ -53,7 +49,7 @@ export default function OptionalInput(props){
                     name="options"
                     value={"false"}
                     checked={active==="false"}
-                    onChange={handleOptionChange}
+                    onChange={(event)=>{setActive(event.target.value)}}
                     className="form-check-input"
                     />
                     <span>Inactive</span>

@@ -15,15 +15,43 @@ const Table=(props)=>{
                 </tr>
             </thead>
             <tbody> 
-                {props.data.map((item,index) => (
-                    <tr key={item.id}>
-                        <th>{index+1}</th>      
-                        <td>{item.csNum}</td>
-                        <td>{item.machine}</td>
-                        <td>{item.date}</td>
-                        <td>{item.location}</td>
-                    </tr>
-                ))}
+                {props.data.map((item,index) => {
+                    return(
+                        <>
+                            <tr className="col" key={item.id} data-bs-toggle="collapse" data-bs-target={`#Collapsable${item.id}`} aria-expanded="false" aria-controls={`Collapsable${item.id}`}>
+                                <th>{index+1}</th>      
+                                <td>{item.csNum}</td>
+                                <td>{item.machine}</td>
+                                <td>{item.date}</td>
+                                <td>{item.location}</td>
+                            </tr>
+                            <tr className="collapse" id={`Collapsable${item.id}`}>
+                                <td colSpan="5" className="pt-0">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <th className="col">Owner</th>
+                                                <th className="col">Department</th>
+                                                <th className="col">Model Number</th>
+                                                <th className="col">Status</th>
+                                                <th className="col">Date Recorded</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{item.owner}</td>
+                                                <td>{item.department}</td>
+                                                <td>{item.modelNumber}</td>
+                                                <td>{item.active}</td>
+                                                <td>{item.dateRecorded}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </>
+                    )})
+                }
             </tbody>
         </table>
     );
