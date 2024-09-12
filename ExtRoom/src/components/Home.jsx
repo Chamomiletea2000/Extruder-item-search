@@ -4,7 +4,7 @@ import QRMaker from "./QRMaker";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../assets/firebase"
 
-const Body=()=>{
+const Home=()=>{
     const [changeFlag,setChangeFlag]=useState(true);
     const [data,setData]=useState([]);
     
@@ -29,10 +29,10 @@ const Body=()=>{
         <div className="row">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-5 bg-light py-5 bg-white pt-0" id="left-side">
+                    <div className="col-5 bg-light bg-white" id="left-side">
                         <Table data={data}/>
                     </div>
-                    <div className="col-7 bg-light py-5 bg-white pt-0" id="right-side">
+                    <div className="col-7 bg-light bg-white" id="right-side">
                         <QRMaker setChangeFlag={setChangeFlag} changeFlag={changeFlag}/>
                     </div>
                 </div>
@@ -41,4 +41,4 @@ const Body=()=>{
     )
 }
 
-export default Body;
+export default Home;

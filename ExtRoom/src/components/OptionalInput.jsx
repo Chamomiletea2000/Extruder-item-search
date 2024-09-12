@@ -6,6 +6,28 @@ export default function OptionalInput(props){
     const [modelNumber,setModelNumber]=useState('');
     const [active,setActive]=useState("true");
 
+    const departments=[
+        '______________',
+        'Strip Prep',
+        'Blade Grinding',
+        'Blade Finishing',
+        'Component Stamping Prod. Supplies',
+        'Packaging',
+        'IMS Molding',
+        'Injection Molding',
+        'Saturn',
+        'Quality audit',
+        'Plant Services',
+        'Industrial Engineering',
+        'Manufacturing Tool Room',
+        'Warehouse and Receiving',
+        'BYG',
+        'Security',
+        'EHS',
+        'Central Stores',
+        'Central Tool Room',
+        'Engineering Services']
+
     useEffect(()=>{
         props.setFullQRData({
             ...props.fullQRData,
@@ -20,15 +42,24 @@ export default function OptionalInput(props){
         <div className="col">
             <div className="input-group mb-3">
                 <span className="input-group-text">Owner:</span>
-                <input placeholder="First-Name Last-Name" value={owner} required={true} className="form-control" type="text" autoComplete="off" id="owner" onChange={(e)=>setOwner(e.target.value)}></input>
+                <input placeholder="First-Name Last-Name" value={owner} className="form-control" type="text" autoComplete="off" id="owner" onChange={(e)=>setOwner(e.target.value)}></input>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text">Department:</span>
-                <input placeholder="*Note to self* make this a drop down" value={department} required={true} className="form-control" type="text" autoComplete="off" id="department" onChange={(e)=>setDepartment(e.target.value)}></input>
+            <div className="input-group mb-3 col">
+                <span className="input-group-text">Department:</span> 
+                <div className="dropdown form-control p-0">
+                    <button placeholder="Chooce a Department" className="form-control dropdown-toggle overflow-hidden border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {department===""?departments[0]:department}
+                    </button>
+                    <ul className="dropdown-menu overflow-auto" style={{height:window.innerHeight/4}}>
+                        {departments.map((dept)=>{
+                            return <li key={dept} ><button className="btn dropdown-item" type="button" onClick={()=>setDepartment(dept)}>{dept}</button></li>
+                        })}
+                    </ul>
+                </div>           
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text">Model Number:</span>
-                <input placeholder="xxxxxxxx" value={modelNumber} required={true} className="form-control" type="text" autoComplete="off" id="modelNumber" onChange={(e)=>setModelNumber(e.target.value)}></input>
+                <input placeholder="xxxxxxxx" value={modelNumber} className="form-control" type="text" autoComplete="off" id="modelNumber" onChange={(e)=>setModelNumber(e.target.value)}></input>
             </div>
             <div className="input-group align-items-center mb-3">
                 <span className="input-group-text">Status</span>

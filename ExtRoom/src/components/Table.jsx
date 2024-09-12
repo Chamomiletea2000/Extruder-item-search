@@ -4,7 +4,7 @@ import React from "react";
 {/*to make it looks nice I add plus one to every index <th> so that it doesnt start at 0*/}
 const Table=(props)=>{  
     return (
-        <div className="overflow-auto" style={{height:`${window.innerHeight-56}px`}}>
+        <div className="overflow-auto" style={{height:`${window.innerHeight-56-40}px`}}>
             <table className="table table-hover">
                 <thead> 
                     <tr>

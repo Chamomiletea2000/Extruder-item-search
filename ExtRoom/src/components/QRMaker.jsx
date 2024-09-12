@@ -56,7 +56,7 @@ const QRMaker=(props)=>{
       });
 
     return(
-        <>
+        <div className="overflow-auto" style={{height:`${window.innerHeight-56-40}px`}}>
             <h3>Create a new Label</h3>
             <form method="GET" onSubmit={handleSubmit} autoComplete="off">
                 <div className="row mx-auto d-flex justify-content-center">
@@ -65,7 +65,7 @@ const QRMaker=(props)=>{
                 </div>
                 <PrintPage newQR={newQR} componentRef={componentRef} qrHeight={qrHeight}/>
             </form>
-        </>
+        </div>
     )
 };
 
