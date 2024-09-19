@@ -9,7 +9,7 @@ const Table=(props)=>{
                 <thead> 
                     <tr>
                         <th className="col">#</th>
-                        <th className="col">CS#</th>
+                        <th className="col">{props.dataMode==="CS#"?"CS#: ":"ID:"}</th>
                         <th className="col">Machine</th>
                         <th className="col">Date</th>
                         <th className="col">Location</th>
@@ -21,7 +21,7 @@ const Table=(props)=>{
                             <React.Fragment key={`Main${item.id}`}>
                                 <tr className="col" key={`Primary${item.id}`} data-bs-toggle="collapse" data-bs-target={`#Collapsable${item.id}`} aria-expanded="false" aria-controls={`Collapsable${item.id}`}>
                                     <th>{index+1}</th>      
-                                    <td>{item.csNum}</td>
+                                    <td>{item.ID}</td>
                                     <td>{item.machine}</td>
                                     <td>{item.date}</td>
                                     <td>{item.location}</td>

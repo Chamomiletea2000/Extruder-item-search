@@ -4,7 +4,9 @@ export default function OptionalInput(props){
     const [owner,setOwner]=useState('');
     const [department,setDepartment]=useState('');
     const [modelNumber,setModelNumber]=useState('');
+    const [date,setDate]=useState("");
     const [active,setActive]=useState("true");
+    
 
     const departments=[
         '______________',
@@ -26,7 +28,8 @@ export default function OptionalInput(props){
         'EHS',
         'Central Stores',
         'Central Tool Room',
-        'Engineering Services']
+        'Engineering Services'
+    ]
 
     useEffect(()=>{
         props.setFullQRData({
@@ -34,12 +37,14 @@ export default function OptionalInput(props){
             owner:owner,
             department:department,
             modelNumber:modelNumber,
-            active:active
+            active:active,
+            date:date
         })
-    },[owner,department,modelNumber,active]);
+    },[owner,department,modelNumber,active,date]);
 
     return(
         <div className="col">
+            Optional
             <div className="input-group mb-3">
                 <span className="input-group-text">Owner:</span>
                 <input placeholder="First-Name Last-Name" value={owner} className="form-control" type="text" autoComplete="off" id="owner" onChange={(e)=>setOwner(e.target.value)}></input>
@@ -85,6 +90,10 @@ export default function OptionalInput(props){
                     />
                     <span>Inactive</span>
                 </div>
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text">Date Purchased:</span>
+                <input value={date} placeholder="mm/dd/yyyy" className="form-control" type="date" autoComplete="off" id="date" onChange={(e)=>setDate(e.target.value)}></input>
             </div>
         </div>
     );
