@@ -19,7 +19,7 @@ const QRMaker=(props)=>{
 
     function addQRData(newData){
         async function docRef() {
-            let collectionType=props.dataMode==="CS#"?"test":"NonInventory"
+            let collectionType=props.dataMode==="CS#"?"Inventory":"NonInventory"
             const doc = await addDoc(collection(db, collectionType ), newData);  //used to be test
               return doc;
         }
@@ -86,7 +86,7 @@ const QRMaker=(props)=>{
           setQRWidth('3in');
           setQRSize(200);
           console.log('Default sizes set');
-          //window.location.reload();
+          window.location.reload();
         },
         onPrintError: (err) => {
           console.error('Print error:', err);

@@ -29,12 +29,15 @@ export default function RequiredInput(props){
         console.log("this is fullqrdata",props.fullQRData);
     },[props.fullQRData])
 
+    useEffect(()=>{
+        props.dataMode==="CS#"?setID(""):setID(props.newID);
+    },[props.dataMode])
     return(
         <div className="col">
             Required*
             <div className="input-group mb-3">
                 <span className="input-group-text">{props.dataMode==="CS#"?"CS#: ":"new ID:"}</span>
-                <input placeholder="123456" value={props.dataMode==="CS#"?ID:setID(props.newID} disabled={props.dataMode==="CS#"?false:true} required={true} className="form-control" type="text" autoComplete="off" id="ID" onChange={(e)=>setID(e.target.value)}></input>
+                <input placeholder="123456" value={ID} disabled={props.dataMode==="CS#"?false:true} required={true} className="form-control" type="text" autoComplete="off" id="ID" onChange={(e)=>setID(e.target.value)}></input>
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text">Machine:</span>

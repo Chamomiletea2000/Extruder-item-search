@@ -15,7 +15,7 @@ const App=() => {
   
   useEffect(() => {
       async function querySnapshot() {
-        let collectionType=dataMode==="CS#"?"test":"NonInventory"
+        let collectionType=dataMode==="CS#"?"Inventory":"NonInventory"
         const querysnapshot = await getDocs(collection(db, collectionType));
         const documents = querysnapshot.docs.map(doc => ({
             id: doc.id, // to store the document ID
