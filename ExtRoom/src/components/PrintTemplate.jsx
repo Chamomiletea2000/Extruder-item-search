@@ -3,22 +3,21 @@ import QRCode from "react-qr-code";
 
 const PrintTemplate = React.forwardRef((props, ref) => {
   return (
-    <div ref={ref} style={{...styles.printArea,height:props.qrHeight}}>
-      <div style={styles.qrCode}>
-        <QRCode value={props.newQR} size={200} />
-      </div>
-        {props.newQR.split('\n').map((item, index)=>{
+    <div ref={ref} style={{...styles.printArea,height:props.qrHeight,width:props.qrWidth}}>
+      {props.newQR.split('\n').map((item, index)=>{
           return(
-            <div key={index} style={styles.description} className='row p-1 m-0'>{item==='true'?"Active":item==='false'?"Inactive":item}</div>
+            <div key={index} style={styles.description} className='row p-1 m-0'>{item}</div>
           );
         })}
+      <div style={styles.qrCode}>
+        <QRCode value={props.newQR} size={props.qrSize} />
+      </div>
     </div>
   );
 });
 
 const styles = {
   printArea: {
-    width: '3in',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

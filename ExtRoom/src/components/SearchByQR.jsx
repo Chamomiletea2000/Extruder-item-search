@@ -1,8 +1,5 @@
 import React from "react";
 
-// export default function SearchByQR(){
+export default function SearchByQR(){
     
-//     return(
-
-//     );
-// }
+}
